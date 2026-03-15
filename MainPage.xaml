@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.MainPage"
+             Title="Home">
+
+    <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Start" Margin="0,20,0,0">
+        <!-- Date + Weather Row -->
+        <HorizontalStackLayout HorizontalOptions="Start" Spacing="20">
+            <Label x:Name="lblCurrentDate"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#2196F3"/>
+            <Label Text="Sunny"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#FF9800"/>
+        </HorizontalStackLayout>
+
+        <!-- Task Content Area -->
+        <Border Padding="20" BackgroundColor="#F5F5F5">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <VerticalStackLayout Spacing="15">
+                <Label Text="Today's Tasks"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Start"/>
+
+                <!-- Modification: Bind completion status style -->
+                <Label x:Name="lblTodayTask"
+                       FontSize="16"
+                       LineBreakMode="WordWrap"
+                       MaxLines="3"
+                       HorizontalOptions="Start">
+                    <Label.Triggers>
+                        <!-- Completed: Gray text + strikethrough -->
+                        <DataTrigger TargetType="Label" Binding="{Binding IsAllDailyTasksCompleted}" Value="True">
+                            <Setter Property="TextColor" Value="#9E9E9E"/>
+                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                        </DataTrigger>
+                        <!-- Uncompleted: Default blue -->
+                        <DataTrigger TargetType="Label" Binding="{Binding IsAllDailyTasksCompleted}" Value="False">
+                            <Setter Property="TextColor" Value="#212121"/>
+                            <Setter Property="TextDecorations" Value="None"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+
+                <!-- Complete Tasks Button -->
+                <Button x:Name="btnCompleteTask"
+                        Text="Complete Tasks"
+                        WidthRequest="120"
+                        HorizontalOptions="Start"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Task Status Preview Entry -->
+        <Button x:Name="btnTaskStatusPreview"
+                Text="Task Status Preview"
+                WidthRequest="180"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"
+                BackgroundColor="#4CAF50"
+                TextColor="White"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.TaskConfigPage"
+             Title="Task Configuration">
+
+    <VerticalStackLayout Padding="30" Spacing="30" VerticalOptions="Center" Margin="0,20,0,0">
+        <!-- Daily Task Card (added tap gesture) -->
+        <Border HeightRequest="120" BackgroundColor="#E3F2FD">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12"/>
+            </Border.StrokeShape>
+            <!-- Tap Gesture: Bind to TapDailyTask method -->
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapDailyTask" NumberOfTapsRequired="1"/>
+            </Border.GestureRecognizers>
+            <VerticalStackLayout Padding="20" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Daily Tasks"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#1976D2"/>
+                <Label Text="Configure tasks to be completed on the day"
+                       FontSize="14"
+                       TextColor="#616161"
+                       Margin="0,5,0,0"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Weekly Task Card (added tap gesture) -->
+        <Border HeightRequest="120" BackgroundColor="#E8F5E9">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12"/>
+            </Border.StrokeShape>
+            <!-- Tap Gesture: Bind to TapWeeklyTask method -->
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapWeeklyTask" NumberOfTapsRequired="1"/>
+            </Border.GestureRecognizers>
+            <VerticalStackLayout Padding="20" VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Weekly Tasks"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#388E3C"/>
+                <Label Text="Configure tasks to be completed during the week"
+                       FontSize="14"
+                       TextColor="#616161"
+                       Margin="0,5,0,0"/>
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

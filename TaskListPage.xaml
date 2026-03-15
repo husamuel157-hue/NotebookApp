@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.TaskListPage"
+             Title="Task List">
+
+    <!-- Main Layout: Vertical scroll, top margin, card spacing 20 -->
+    <ScrollView Padding="30" Margin="0,20,0,0">
+        <VerticalStackLayout Spacing="20">
+            <!-- Page Title (show Daily/Weekly) -->
+            <Label x:Name="lblTaskType"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#212121"
+                   HorizontalOptions="Start"/>
+
+            <!-- 1. Shopping Tasks Card -->
+            <Border BackgroundColor="#FFF3E0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <!-- Card Title + Add Button  -->
+                    <Grid HorizontalOptions="Fill" ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Shopping Tasks"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#E65100"
+                               VerticalOptions="Center"/>
+                        <!-- Add Shopping Task Button -->
+                        <Button Grid.Column="1"
+                                x:Name="btnAddShoppingTask"
+                                Text="+"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                FontSize="20"
+                                BackgroundColor="#E65100"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Clicked="BtnAddShoppingTask_Clicked"/>
+                    </Grid>
+
+                    <!-- Shopping Task List (dynamic rendering) -->
+                    <CollectionView x:Name="cvShoppingTasks"
+                                    ItemsSource="{Binding}"
+                                    EmptyView="No shopping tasks">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Single Task Item: Content + Delete Button -->
+                                <HorizontalStackLayout Spacing="10" Padding="5" VerticalOptions="Center">
+                                    <!-- Task Content (bind completion status style) -->
+                                    <Label Text="{Binding Content}"
+                                           FontSize="14"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="2"
+                                           HorizontalOptions="Fill">
+                                        <Label.Triggers>
+                                            <!-- Completed: Gray + strikethrough -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                                <Setter Property="TextColor" Value="#9E9E9E"/>
+                                                <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                            </DataTrigger>
+                                            <!-- Uncompleted: Default black -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="False">
+                                                <Setter Property="TextColor" Value="#424242"/>
+                                                <Setter Property="TextDecorations" Value="None"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    <!-- Delete Button -->
+                                    <Button Text="×"
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            FontSize="16"
+                                            BackgroundColor="#FF5252"
+                                            TextColor="White"
+                                            CornerRadius="15"
+                                            Clicked="BtnDeleteShoppingTask_Clicked"
+                                            CommandParameter="{Binding Id}"/>
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 2. Work Tasks Card -->
+            <Border BackgroundColor="#E0F2F1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Padding="20" Spacing="15">
+                    <!-- Card Title + Add Button  -->
+                    <Grid HorizontalOptions="Fill" ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Text="Work Tasks"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#00897B"
+                               VerticalOptions="Center"/>
+                        <!-- Add Work Task Button -->
+                        <Button Grid.Column="1"
+                                x:Name="btnAddWorkTask"
+                                Text="+"
+                                WidthRequest="36"
+                                HeightRequest="36"
+                                FontSize="20"
+                                BackgroundColor="#00897B"
+                                TextColor="White"
+                                CornerRadius="18"
+                                Clicked="BtnAddWorkTask_Clicked"/>
+                    </Grid>
+
+                    <!-- Work Task List (dynamic rendering) -->
+                    <CollectionView x:Name="cvWorkTasks"
+                                    ItemsSource="{Binding}"
+                                    EmptyView="No work tasks">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <!-- Single Task Item: Content + Delete Button -->
+                                <HorizontalStackLayout Spacing="10" Padding="5" VerticalOptions="Center">
+                                    <!-- Task Content (bind completion status style) -->
+                                    <Label Text="{Binding Content}"
+                                           FontSize="14"
+                                           LineBreakMode="TailTruncation"
+                                           MaxLines="2"
+                                           HorizontalOptions="Fill">
+                                        <Label.Triggers>
+                                            <!-- Completed: Gray + strikethrough -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="True">
+                                                <Setter Property="TextColor" Value="#9E9E9E"/>
+                                                <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                            </DataTrigger>
+                                            <!-- Uncompleted: Default black -->
+                                            <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="False">
+                                                <Setter Property="TextColor" Value="#424242"/>
+                                                <Setter Property="TextDecorations" Value="None"/>
+                                            </DataTrigger>
+                                        </Label.Triggers>
+                                    </Label>
+                                    <!-- Delete Button -->
+                                    <Button Text="×"
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            FontSize="16"
+                                            BackgroundColor="#FF5252"
+                                            TextColor="White"
+                                            CornerRadius="15"
+                                            Clicked="BtnDeleteWorkTask_Clicked"
+                                            CommandParameter="{Binding Id}"/>
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.WeeklyTaskPreviewPage"
+             Title="Weekly Task Status Preview">
+
+    <!-- Main Layout: Full page, vertical arrangement -->
+    <VerticalStackLayout VerticalOptions="Fill" HorizontalOptions="Fill" 
+                         Padding="20" Margin="0" Spacing="15">
+        <!-- Page Title -->
+        <Label Text="Weekly Task Status Preview"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#212121"
+               HorizontalOptions="Center"/>
+
+        <!-- Core: 7-day grid (simulate table borders) -->
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="Fill"
+              ColumnDefinitions="*,*,*,*,*,*,*" 
+            RowDefinitions="Auto,Auto,Auto"
+            ColumnSpacing="1" RowSpacing="1"
+            BackgroundColor="#CCCCCC">
+            <!-- Background color as table border color -->
+
+            <!-- Row 0: Week day names (table header) -->
+            <Border Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay1" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay2" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="2" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay3" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="3" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay4" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="4" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay5" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="5" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay6" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="0" Grid.Column="6" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblWeekDay7" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+
+            <!-- Row 1: Date numbers (week sequence core) -->
+            <Border Grid.Row="1" Grid.Column="0" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay1" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="1" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay2" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="2" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay3" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="3" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay4" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="4" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay5" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="5" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay6" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+            <Border Grid.Row="1" Grid.Column="6" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblDay7" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="20" FontAttributes="Bold" TextColor="#000"/>
+            </Border>
+
+            <!-- Row 2: Status markers (only show when there are tasks) -->
+            <Border Grid.Row="2" Grid.Column="0" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus1" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="1" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus2" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="2" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus3" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="3" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus4" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="4" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus5" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="5" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus6" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+            <Border Grid.Row="2" Grid.Column="6" BackgroundColor="White" Padding="5">
+                <Label x:Name="lblStatus7" HorizontalOptions="Center" VerticalOptions="Center" 
+                       FontSize="14" IsVisible="False"/>
+            </Border>
+        </Grid>
+
+        <!-- Status Description -->
+        <Label Text="red√=Completed | black×=Uncompleted | yellow=In Progress"
+               FontSize="12"
+               TextColor="#757575"
+               HorizontalOptions="Center"
+               Margin="0,10,0,0"/>
+    </VerticalStackLayout>
+</ContentPage>
