@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.TaskListPage"
+             Title="Task Management">
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="20">
+            <VerticalStackLayout Spacing="5">
+                <Label x:Name="lblPageTitle"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#2196F3"
+                       HorizontalOptions="Start"
+                       Text="Task Management"/>
+            </VerticalStackLayout>
+
+            <!-- ========== Shopping Tasks Card ========== -->
+            <Border BackgroundColor="#F5F5F5"
+                    Stroke="#E0E0E0"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="0">
+                    <!-- Shopping Tasks Title -->
+                    <Grid Padding="20,15,20,15"
+                          ColumnDefinitions="Auto,*,Auto"
+                          ColumnSpacing="10"
+                          BackgroundColor="#FFF3E0">
+                        <Border Grid.Column="0"
+                                WidthRequest="24"
+                                HeightRequest="24"
+                                BackgroundColor="#FF9800"
+                                StrokeShape="RoundRectangle 4">
+                            <Label Text="S"
+                                   FontSize="12"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="2">
+                            <Label Text="Shopping Tasks"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                            <Label x:Name="lblShoppingCount"
+                                   Text="🛒 0 tasks"
+                                   FontSize="14"
+                                   TextColor="#757575"/>
+                        </VerticalStackLayout>
+                        <Button Grid.Column="2"
+                                x:Name="btnAddShoppingTask"
+                                Text="+ Add"
+                                FontSize="14"
+                                TextColor="White"
+                                BackgroundColor="#FF9800"
+                                CornerRadius="6"
+                                Padding="10,4"
+                                HeightRequest="30"
+                                WidthRequest="60"
+                                VerticalOptions="Center"
+                                Clicked="BtnAddShoppingTask_Clicked"/>
+                    </Grid>
+
+                    <!-- Shopping Tasks List -->
+                    <CollectionView x:Name="cvShoppingTasks"
+                                    ItemsSource="{Binding}"
+                                    Margin="0,0,0,10"
+                                    IsVisible="False">
+                        <CollectionView.EmptyView>
+                            <Border Margin="20,10"
+                                    BackgroundColor="White"
+                                    Stroke="#E0E0E0"
+                                    StrokeThickness="1"
+                                    StrokeDashArray="4,2"
+                                    StrokeShape="RoundRectangle 6">
+                                <Label Text="No shopping tasks"
+                                       FontSize="14"
+                                       TextColor="#9E9E9E"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       Padding="20,15"/>
+                            </Border>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="20,5"
+                                        BackgroundColor="White"
+                                        Stroke="#E0E0E0"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Grid Padding="15,10"
+                                          ColumnDefinitions="*,Auto"
+                                          ColumnSpacing="10"
+                                          VerticalOptions="Center">
+                                        <Label Grid.Column="0"
+                                               Text="{Binding Content}"
+                                               FontSize="14"
+                                               TextColor="#212121"
+                                               VerticalOptions="Center"
+                                               LineBreakMode="TailTruncation"
+                                               MaxLines="2"/>
+                                        <Image Grid.Column="1"
+                                               Source="delete.png"
+                                               WidthRequest="28"
+                                               HeightRequest="28"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Tapped="BtnDeleteShoppingTask_Clicked"
+                                                    CommandParameter="{Binding Id}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ========== Work Tasks Card ========== -->
+            <Border BackgroundColor="#F5F5F5"
+                    Stroke="#E0E0E0"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="0">
+                    <!-- Work Tasks Title -->
+                    <Grid Padding="20,15,20,15"
+                          ColumnDefinitions="Auto,*,Auto"
+                          ColumnSpacing="10"
+                          BackgroundColor="#E3F2FD">
+                        <Border Grid.Column="0"
+                                WidthRequest="24"
+                                HeightRequest="24"
+                                BackgroundColor="#2196F3"
+                                StrokeShape="RoundRectangle 4">
+                            <Label Text="W"
+                                   FontSize="12"
+                                   TextColor="White"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1"
+                                             VerticalOptions="Center"
+                                             Spacing="2">
+                            <Label Text="Work Tasks"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                            <Label x:Name="lblWorkCount"
+                                   Text="💼 0 tasks"
+                                   FontSize="14"
+                                   TextColor="#757575"/>
+                        </VerticalStackLayout>
+                        <Button Grid.Column="2"
+                                x:Name="btnAddWorkTask"
+                                Text="+ Add"
+                                FontSize="14"
+                                TextColor="White"
+                                BackgroundColor="#2196F3"
+                                CornerRadius="6"
+                                Padding="10,4"
+                                HeightRequest="30"
+                                WidthRequest="60"
+                                VerticalOptions="Center"
+                                Clicked="BtnAddWorkTask_Clicked"/>
+                    </Grid>
+
+                    <!-- Work Tasks List -->
+                    <CollectionView x:Name="cvWorkTasks"
+                                    ItemsSource="{Binding}"
+                                    Margin="0,0,0,10"
+                                    IsVisible="False">
+                        <CollectionView.EmptyView>
+                            <VerticalStackLayout Margin="20,10" Spacing="10">
+                                <Border BackgroundColor="White"
+                                        Stroke="#E0E0E0"
+                                        StrokeThickness="1"
+                                        StrokeDashArray="4,2"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Label Text="No work tasks"
+                                           FontSize="14"
+                                           TextColor="#9E9E9E"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Padding="20,15"/>
+                                </Border>
+                                <Border BackgroundColor="White"
+                                        Stroke="#E0E0E0"
+                                        StrokeThickness="1"
+                                        StrokeDashArray="4,2"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Label Text="Click + button to add task"
+                                           FontSize="14"
+                                           TextColor="#2196F3"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           Padding="20,15"/>
+                                </Border>
+                            </VerticalStackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="20,5"
+                                        BackgroundColor="White"
+                                        Stroke="#E0E0E0"
+                                        StrokeThickness="1"
+                                        StrokeShape="RoundRectangle 6">
+                                    <Grid Padding="15,10"
+                                          ColumnDefinitions="*,Auto"
+                                          ColumnSpacing="10"
+                                          VerticalOptions="Center">
+                                        <Label Grid.Column="0"
+                                               Text="{Binding Content}"
+                                               FontSize="14"
+                                               TextColor="#212121"
+                                               VerticalOptions="Center"
+                                               LineBreakMode="TailTruncation"
+                                               MaxLines="2"/>
+                                        <Image Grid.Column="1"
+                                               Source="delete.png"
+                                               WidthRequest="28"
+                                               HeightRequest="28"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                                                    Tapped="BtnDeleteWorkTask_Clicked"
+                                                    CommandParameter="{Binding Id}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

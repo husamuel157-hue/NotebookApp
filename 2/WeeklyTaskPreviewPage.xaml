@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.WeeklyTaskPreviewPage"
+             Title="Task Preview">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Page Title -->
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Weekly Task Status Preview"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#212121"/>
+                <Label x:Name="lblWeekRange"
+                       FontSize="14"
+                       TextColor="#757575"/>
+            </VerticalStackLayout>
+
+            <!-- Weekly Completion Rate -->
+            <Border BackgroundColor="#F5F5F5" 
+                    Stroke="#E0E0E0" 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout>
+                        <Label Text="📊"
+                               FontSize="16"
+                               VerticalOptions="Center"/>
+                        <Label Text="Weekly Completion Rate: "
+                               FontSize="16"
+                               TextColor="#212121"
+                               VerticalOptions="Center"/>
+                        <Label x:Name="lblCompletionRate"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#2196F3"
+                               VerticalOptions="Center"
+                               HorizontalOptions="EndAndExpand"/>
+                    </HorizontalStackLayout>
+                    
+                    <!-- Progress Bar -->
+                    <Border x:Name="progressBarContainer"
+                            HeightRequest="8"
+                            BackgroundColor="#E0E0E0"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 4">
+                        <Border x:Name="progressBarFill"
+                                HeightRequest="8"
+                                BackgroundColor="#2196F3"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 4"
+                                HorizontalOptions="Start"/>
+                    </Border>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Calendar Table -->
+            <Border BackgroundColor="#F5F5F5" 
+                    Stroke="#E0E0E0" 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="15">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Weekly Task Calendar"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#212121"/>
+                    
+                    <!-- 7-Day Grid -->
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" 
+                          RowDefinitions="Auto,Auto,Auto"
+                          ColumnSpacing="1"
+                          RowSpacing="1"
+                          BackgroundColor="#CCCCCC">
+                        
+                        <!-- Weekday Row -->
+                        <Border Grid.Row="0" Grid.Column="0" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay1" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay2" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay3" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay4" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="4" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay5" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="5" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay6" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="6" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblWeekDay7" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+
+                        <!-- Date Row -->
+                        <Border Grid.Row="1" Grid.Column="0" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay1" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay2" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="2" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay3" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="3" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay4" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="4" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay5" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="5" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay6" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="6" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblDay7" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="#212121"/>
+                        </Border>
+
+                        <!-- Status Row -->
+                        <Border Grid.Row="2" Grid.Column="0" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus1" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="1" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus2" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="2" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus3" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="3" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus4" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="4" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus5" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="5" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus6" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                        <Border Grid.Row="2" Grid.Column="6" BackgroundColor="White" Padding="8,5">
+                            <Label x:Name="lblStatus7" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   FontSize="16"
+                                   FontAttributes="Bold"/>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Category Statistics -->
+            <Border BackgroundColor="#F5F5F5" 
+                    Stroke="#E0E0E0" 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="20">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Category Statistics"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#212121"/>
+
+                    <!-- Shopping Tasks Statistics -->
+                    <VerticalStackLayout Spacing="5">
+                        <HorizontalStackLayout>
+                            <Label Text="🛒 Shopping Tasks: "
+                                   FontSize="14"
+                                   TextColor="#212121"/>
+                            <Label x:Name="lblShoppingStats"
+                                   FontSize="14"
+                                   TextColor="#FF9800"
+                                   HorizontalOptions="EndAndExpand"/>
+                        </HorizontalStackLayout>
+                        <Border x:Name="shoppingProgressBarContainer"
+                                HeightRequest="6"
+                                BackgroundColor="#E0E0E0"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 3">
+                            <Border x:Name="shoppingProgressBar"
+                                    HeightRequest="6"
+                                    BackgroundColor="#FF9800"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 3"
+                                    HorizontalOptions="Start"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Work Tasks Statistics -->
+                    <VerticalStackLayout Spacing="5">
+                        <HorizontalStackLayout>
+                            <Label Text="💼 Work Tasks: "
+                                   FontSize="14"
+                                   TextColor="#212121"/>
+                            <Label x:Name="lblWorkStats"
+                                   FontSize="14"
+                                   TextColor="#2196F3"
+                                   HorizontalOptions="EndAndExpand"/>
+                        </HorizontalStackLayout>
+                        <Border x:Name="workProgressBarContainer"
+                                HeightRequest="6"
+                                BackgroundColor="#E0E0E0"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 3">
+                            <Border x:Name="workProgressBar"
+                                    HeightRequest="6"
+                                    BackgroundColor="#2196F3"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 3"
+                                    HorizontalOptions="Start"/>
+                        </Border>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

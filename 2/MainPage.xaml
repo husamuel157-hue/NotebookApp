@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotebookApp.MainPage"
+             Title="Home">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <!-- Top Bar -->
+            <Border HeightRequest="60" BackgroundColor="#F5F5F5" Stroke="Transparent">
+                <VerticalStackLayout Padding="20,0">
+                    <Label x:Name="lblAppTitle"
+                           Text="NotebookApp"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#2196F3"/>
+                    <Label x:Name="lblCurrentDate"
+                           FontSize="14"
+                           TextColor="#757575"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ========== Today's Tasks Card ========== -->
+            <Border HeightRequest="240" 
+                    BackgroundColor="#F5F5F5" 
+                    Stroke="#E0E0E0" 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="10">
+                    <!-- Card Title -->
+                    <Grid Padding="15,15,15,5" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Day Icon -->
+                        <Border Grid.Column="0"
+                                WidthRequest="20" 
+                                HeightRequest="20" 
+                                BackgroundColor="#2196F3"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 4">
+                            <Label Text="D" 
+                                   FontSize="12" 
+                                   TextColor="White"
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        
+                        <!-- Title -->
+                        <Label Grid.Column="1"
+                               Text="Today's Tasks"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#212121"
+                               VerticalOptions="Center"/>
+                        
+                        <!-- Statistics -->
+                        <Label Grid.Column="2"
+                               x:Name="lblDailyStats"
+                               Text="0/0 Completed"
+                               FontSize="14"
+                               TextColor="#757575"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+
+                        <!-- Batch completion button -->
+                        <Image Grid.Column="3"
+                               x:Name="btnCompleteAllDaily"
+                               Source="batch.png"
+                               WidthRequest="18"
+                               HeightRequest="18"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               Aspect="AspectFit">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnCompleteAllDaily_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+
+                    <!-- Day Task List (Scrollable) -->
+                    <ScrollView HeightRequest="180" VerticalScrollBarVisibility="Always">
+                        <VerticalStackLayout x:Name="dailyTasksContainer" 
+                                             Spacing="8" 
+                                             Padding="15,0,15,15">
+                            <!-- Task items will be dynamically generated through code -->
+                            <Label Text="No tasks for today"
+                                   FontSize="14"
+                                   TextColor="#9E9E9E"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   HeightRequest="150"/>
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- ========== Weekly Tasks Card ========== -->
+            <Border HeightRequest="240" 
+                    BackgroundColor="#F5F5F5" 
+                    Stroke="#E0E0E0" 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 12">
+                <VerticalStackLayout Spacing="10">
+                    <!-- Card Title -->
+                    <Grid Padding="15,15,15,5" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Week Icon -->
+                        <Border Grid.Column="0"
+                                WidthRequest="20" 
+                                HeightRequest="20" 
+                                BackgroundColor="#4CAF50"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 4">
+                            <Label Text="W" 
+                                   FontSize="12" 
+                                   TextColor="White"
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"/>
+                        </Border>
+                        
+                        <!-- Title -->
+                        <Label Grid.Column="1"
+                               Text="Weekly Tasks"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#212121"
+                               VerticalOptions="Center"/>
+                        
+                        <!-- Statistics -->
+                        <Label Grid.Column="2"
+                               x:Name="lblWeeklyStats"
+                               Text="0/0 Completed"
+                               FontSize="14"
+                               TextColor="#757575"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"/>
+
+                        <!-- Batch completion button -->
+                        <Image Grid.Column="3"
+                               x:Name="btnCompleteAllWeekly"
+                               Source="batch.png"
+                               WidthRequest="18"
+                               HeightRequest="18"
+                               VerticalOptions="Center"
+                               HorizontalOptions="End"
+                               Aspect="AspectFit">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnCompleteAllWeekly_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+
+                    <!-- Weekly Task List (Scrollable) -->
+                    <ScrollView HeightRequest="180" VerticalScrollBarVisibility="Always">
+                        <VerticalStackLayout x:Name="weeklyTasksContainer" 
+                                             Spacing="8" 
+                                             Padding="15,0,15,15">
+                            <!-- Task items will be dynamically generated through code -->
+                            <Label Text="No tasks for this week"
+                                   FontSize="14"
+                                   TextColor="#9E9E9E"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   HeightRequest="150"/>
+                        </VerticalStackLayout>
+                    </ScrollView>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
